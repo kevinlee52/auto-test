@@ -1,30 +1,23 @@
-console.log(typeof 1)
-console.log(typeof function(){})
-
-class People {
-    constructor(name, age) {
-        this.name=name;
-        this.age=age;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
     }
-    eat() {
-        console.log(`${this.name} is eating.`);
-    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+// function reverseSorted(input: number[]): number[] {
+// return input.sort().reverse();
+// }
+// const started = [1, 2, 3, 4, 5];
+// const res = reverseSorted(started);
+// console.log(started);
+// console.log(res);
+function reverseSorted(input) {
+    return __spreadArray([], input, true).sort().reverse();
 }
-
-class Student extends People {
-    constructor(name, age, id) {
-        super(name, age);
-        this.id = id;
-    }
-    study(){
-        console.log(`${this.name} is studying.`);
-    }
-}
-
-const s = new Student('Ming Xiao', 20, "62003");
-console.log(s.__proto__ === Student.prototype);
-console.log(Student.prototype.__proto__ === People.prototype);
-console.log(People.prototype.__proto__ === Object.prototype);
-console.log(s instanceof Student)
-console.log(s instanceof People)
-console.log(s instanceof Object)
+var started = [1, 2, 3, 4, 5];
+var res = reverseSorted(started);
+console.log(started);
+console.log(res);
