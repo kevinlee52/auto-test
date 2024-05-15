@@ -1,2 +1,83 @@
 <!DOCTYPE html>
-<script src="test.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display:flex;
+            height:500px;
+        }
+        .box .left {
+            width:150px;
+            background-color: skyblue;
+        }
+        .box .right {
+            flex:1;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header"></header>
+    <div class="box">
+        <aside class="left">
+            <ul>
+                <li>首页</li>    
+                <li>用户管理</li>    
+                <li>权限管理</li>    
+                <li>新闻管理</li>    
+            </ul>
+        </aside>
+        <div class="right">
+
+        </div>
+    </div>
+    
+    
+    
+    <script>
+        class Subject{
+            constructor(name){
+                this.name = name
+                this.observers = []
+            }
+            add(observer){
+                this.observers.push(observer)
+            }
+            remove(observer){
+                this.observers = observers.filter(item=>item!==observer)
+            }
+            notify(clickedItem){
+                this.observers.forEach((observer)=>{
+                    observer.update(clickedItem)
+                })
+            }
+        }
+        class Observer {
+            constructor(clsName){
+                this.ele = document.querySelector(clsName)
+            }
+            update(clickedItem){
+                console.log(`update ${clickedItem}`)
+                this.ele.innerHTML = clickedItem
+            }
+        }
+
+        sub = new Subject('subject')
+        observer1 = new Observer('.header')
+        observer2 = new Observer('.right')
+        sub.add(observer1)
+        sub.add(observer2)
+
+        let aside_u_li = document.querySelectorAll('.left li')
+        for (let i=0; i < aside_u_li.length; i++){
+            aside_u_li[i].onclick = function(){
+                sub.notify(this.innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>
