@@ -7,37 +7,85 @@
 </head>
 <body>
     <script>
-       class PubSub {
-        constructor(name){
-            this.name = name;
-            this.services = {}
-        }
-        subscribe(news, sub){
-            if (news in this.services){
-                this.services[news].push(sub)
-            }else{
-                this.services[news] = [sub]
-            }
-        }
-        publish(news){
-            if(!this.services[news] || !Array.isArray(this.services[news])) return
-            for (let sub of this.services[news]) {
-                sub()
-            }
-        }
-       }
+    //    class PubSub {
+    //     constructor(name){
+    //         this.name = name;
+    //         this.services = {}
+    //     }
+    //     subscribe(news, sub){
+    //         if (news in this.services){
+    //             this.services[news].push(sub)
+    //         }else{
+    //             this.services[news] = [sub]
+    //         }
+    //     }
+    //     publish(news){
+    //         if(!this.services[news] || !Array.isArray(this.services[news])) return
+    //         for (let sub of this.services[news]) {
+    //             sub()
+    //         }
+    //     }
+    //    }
 
-       function cb1(){
-            console.log('cb1')
-       }
-       function cb2(){
-            console.log('cb2')
-       }
+    //    function cb1(){
+    //         console.log('cb1')
+    //    }
+    //    function cb2(){
+    //         console.log('cb2')
+    //    }
 
-       let pubsub = new PubSub('agent')
-       pubsub.subscribe('news', cb1)
-       pubsub.subscribe('news', cb2)
-       pubsub.publish('news')
+    //    let pubsub = new PubSub('agent')
+    //    pubsub.subscribe('news', cb1)
+    //    pubsub.subscribe('news', cb2)
+    //    pubsub.publish('news')
+            class Carrier_SchdulingCenter {
+                constructor(name){
+                    this.name = name
+                    this.events = {}
+                }
+                subscribe(event_name, fn){
+                    if(!fn || typeof fn != 'function') return
+                    const sub_fn_arr = this.events[event_name]
+                    if(sub_fn_arr && Array.isArray(sub_fn_arr)){
+                        !sub_fn_arr.includes(fn) && sub_fn_arr.push(fn)
+                    }else{
+                        sub_fn_arr = [fn]
+                    }
+                }
+                publish(event_name, ...data){
+                    const sub_fn_arr = this.events[event_name]
+                    if(sub_fn_arr && Array.isArray(sub_fn_arr)){
+                        for (let fn of sub_fn_arr){
+                            fn(...data)
+                        }
+                    }
+                }
+            }
+
+            const pubSub = new Carrier_SchdulingCenter()
+
+            let waitAllRender = ()=>{
+                const dataObj = {}
+                const expect = 2
+                return (type, data)=>{
+                    dataObj[type] = data;
+                    if(Object.keys(dataObj).length === expect){
+                        render(dataObj['fileData'], dataObj['httpData'])
+                    }
+                }
+            }
+
+            pubSub.subscribe('process_finished', waitAllRender())
+
+            fs.readFile('xxx.txt', (err, data)=>{
+                pubSub.publish('process_finished', 'fileData', data)
+            })
+
+            fetch('xxx').then(data=>{
+                pubSub.publish('process_finished', 'httpData', data)
+            })
+
     </script>
+
 </body>
 </html>
