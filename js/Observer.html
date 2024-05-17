@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Subject{
+            constructor(name){
+                this.name=name;
+                this.observerList = [];
+            }
+            add(observer){
+                this.observerList.push(observer)
+            }
+            notify(){
+                for (let observer of this.observerList){
+                    observer.update()
+                }
+            }
+        }
+
+        class Observer{
+            constructor(name){
+                this.name=name
+            }
+            update(){
+                console.log(`update observer ${this.name}`)
+            }
+        }
+
+        let ob1 = new Observer('Kevin')
+        let ob2 = new Observer('Cy')
+        let ob3 = new Observer('Jason')
+        let sub = new Subject('Chase')
+        sub.add(ob1)
+        sub.add(ob2)
+        sub.add(ob3)
+        console.log(sub.observerList)
+        sub.notify()
+    </script>
+</body>
+</html>

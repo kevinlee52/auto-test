@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class PubSub {
+        constructor(name){
+            this.name = name;
+            this.services = {}
+        }
+        subscribe(news, sub){
+            if (news in this.services){
+                this.services[news].push(sub)
+            }else{
+                this.services[news] = [sub]
+            }
+        }
+        publish(news){
+            if(!this.services[news] || !Array.isArray(this.services[news])) return
+            for (let sub of this.services[news]) {
+                sub()
+            }
+        }
+       }
+
+       function cb1(){
+            console.log('cb1')
+       }
+       function cb2(){
+            console.log('cb2')
+       }
+
+       let pubsub = new PubSub('agent')
+       pubsub.subscribe('news', cb1)
+       pubsub.subscribe('news', cb2)
+       pubsub.publish('news')
+    </script>
+</body>
+</html>
