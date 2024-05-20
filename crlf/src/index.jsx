@@ -9,6 +9,17 @@ import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import '@/index.less';
+import { each } from './handleJsx';
+import DemoReact from '@/views/demoReact';
+
+let arr = [10,20]
+arr[Symbol('AA')] = 200;
+// Array.prototype.BB = 100;
+each(arr, (...args)=>{
+  console.log(...args)
+})
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -37,6 +48,8 @@ root.render(
   <>
     <h2 className='title' style={styObj}>Test</h2>
     <div className='box'><span>{x}</span><span>{y}</span></div>
+    {React.createElement('button', null, 'createElementButton')}
+    <DemoReact></DemoReact>
   </>
   // <React.StrictMode>
     // <App />
@@ -44,10 +57,28 @@ root.render(
 );
 
 
-console.log(<>
-  <h2 className='title' style={styObj}>Test</h2>
-  <div className='box'><span>{x}</span><span>{y}</span></div>
-</>);
+// console.log(<>
+//   <h2 className='title' style={styObj}>Test</h2>
+//   <div className='box'><span>{x}</span><span>{y}</span></div>
+// </>);
+
+
+
+// console.log(
+//   createElement(React.Fragment, null, 
+//     createElement(
+//       "h2", 
+//       { className: "title", style: styObj}, 
+//       "Test"
+//     ), 
+//     createElement(
+//       "div", 
+//       { className: "box" }, 
+//       createElement("span", null, x), 
+//       createElement("span", null, y)
+//     )
+//   )
+// );
 
 
 // If you want to start measuring performance in your app, pass a function
