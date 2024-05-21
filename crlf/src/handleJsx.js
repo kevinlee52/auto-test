@@ -35,4 +35,4 @@ let arr = [10,20]
 arr[Symbol('AA')] = 200;
 // Array.prototype.BB = 100;
 
-console.log(arr)
+// console.log(arr)

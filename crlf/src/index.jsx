@@ -11,12 +11,13 @@ import ReactDOM from 'react-dom/client';
 import '@/index.less';
 import { each } from './handleJsx';
 import DemoReact from '@/views/demoReact';
+import Vote from './views/vote';
 
 let arr = [10,20]
 arr[Symbol('AA')] = 200;
 // Array.prototype.BB = 100;
 each(arr, (...args)=>{
-  console.log(...args)
+  // console.log(...args)
 })
 
 
@@ -46,10 +47,11 @@ let x = 10, y = 20;
 
 root.render(
   <>
-    <h2 className='title' style={styObj}>Test</h2>
+    {/* <h2 className='title' style={styObj}>Test</h2>
     <div className='box'><span>{x}</span><span>{y}</span></div>
     {React.createElement('button', null, 'createElementButton')}
-    <DemoReact></DemoReact>
+    <DemoReact></DemoReact> */}
+    <Vote></Vote>
   </>
   // <React.StrictMode>
     // <App />
