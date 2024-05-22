@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import Task from './views/Task';
+import Hooks from './views/Hooks'
 import '@/index.less';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +20,7 @@ root.render(
     <div className='box'><span>{x}</span><span>{y}</span></div>
     {React.createElement('button', null, 'createElementButton')}
     <DemoReact></DemoReact> */}
-    <Task></Task>
+    <Hooks></Hooks>
   </>
   // <React.StrictMode>
     // <App />
