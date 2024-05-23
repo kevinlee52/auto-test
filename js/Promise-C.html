@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Promise-C.js"></script>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve,reject)=>{
+            resolve('OK')
+        })
+        let p2 = new Promise((resolve,reject)=>{
+            resolve('AAA')
+        })
+        let p3 = new Promise((resolve,reject)=>{
+            resolve('BBB')
+        })
+
+        let all = Promise.all([p1,p2,p3])
+
+        console.log(all);
+
+
+        // let p = new Promise((resolve, reject)=>{
+        //     setTimeout(()=>{
+        //         resolve('Good')
+        //         reject('Error')
+        //         // throw 'errString'
+        //     },2000)
+            
+        // })
+
+        // p.then().then(value => {
+        //     console.log(222)
+        // }).then(value => {
+        //     console.log(333)
+        // }).catch(reason=>{
+        //     console.warn(reason);
+        // })
+        
+        // let ca = p.catch(reason=>{
+        //     console.warn(reason);
+        // })
+
+        // let res = p.then(value => {
+        //     console.log(value)
+        //     // throw 'errorthrow'
+        //     // return new Promise((res, rej)=>{
+        //     //     rej('return fail')
+        //     // })
+        // }, err=>{
+        //     // throw 'errThr'
+        //     console.warn(err)
+        // })
+        // // p.then(res => {
+        // //     console.log(res)
+        // // }, err=>{
+        // //     console.warn(err)
+        // // })
+        // console.log(res)
+
+</script>
+</body>
+</html>

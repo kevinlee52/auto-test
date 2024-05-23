@@ -39,45 +39,22 @@
     
     
     <script>
-        class Subject{
-            constructor(name){
-                this.name = name
-                this.observers = []
-            }
-            add(observer){
-                this.observers.push(observer)
-            }
-            remove(observer){
-                this.observers = observers.filter(item=>item!==observer)
-            }
-            notify(clickedItem){
-                this.observers.forEach((observer)=>{
-                    observer.update(clickedItem)
-                })
-            }
-        }
-        class Observer {
-            constructor(clsName){
-                this.ele = document.querySelector(clsName)
-            }
-            update(clickedItem){
-                console.log(`update ${clickedItem}`)
-                this.ele.innerHTML = clickedItem
-            }
-        }
+        let p = new Promise((res, rej)=>{
+            // setTimeout(()=>{
+            //     res('good')
+            //     console.log('pppppp');
+            // },5000)
+            res('good')
+            console.log('pppppp');
+            console.log('AAA');
+        })
+        console.log('BBB');
+        let p_return = p.then(res=>{
+            console.log(p)
+        })
 
-        sub = new Subject('subject')
-        observer1 = new Observer('.header')
-        observer2 = new Observer('.right')
-        sub.add(observer1)
-        sub.add(observer2)
-
-        let aside_u_li = document.querySelectorAll('.left li')
-        for (let i=0; i < aside_u_li.length; i++){
-            aside_u_li[i].onclick = function(){
-                sub.notify(this.innerHTML)
-            }
-        }
+        console.log(`p_return is: `)
+        console.log(p_return);
     </script>
 </body>
 </html>
