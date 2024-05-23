@@ -53,15 +53,13 @@ class Task extends React.Component{
         try {
             this.setState({tableLoading:true});
             let {code, list} = await getTaskList(selectedIndex);
-            console.log(code)
-            console.log(list)
             if (+code!==0) list = []
-            setTimeout(()=>{this.setState({
+            this.setState({
                 tableData:list
-            })}, 2000)
+            });
             
         } catch (_) {}
-        setTimeout(()=>{this.setState({tableLoading:false})},2000);
+        this.setState({tableLoading:false});
     }
 
     handleRemove = async (id)=> {
