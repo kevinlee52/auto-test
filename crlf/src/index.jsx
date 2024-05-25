@@ -11,6 +11,8 @@ import ReactDOM from 'react-dom/client';
 import Task from './views/Task func';
 // import Hooks from './views/Hooks'
 import '@/index.less';
+import ThemeContext from './ThemeContext';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,8 +22,10 @@ root.render(
     <div className='box'><span>{x}</span><span>{y}</span></div>
     {React.createElement('button', null, 'createElementButton')}
     <DemoReact></DemoReact> */}
+    <ThemeContext.Provider value={{store}}>
     <Task></Task>
     {/* <Hooks></Hooks> */}
+    </ThemeContext.Provider>
   </>
   // <React.StrictMode>
     // <App />
