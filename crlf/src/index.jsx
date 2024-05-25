@@ -8,8 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import Task from './views/Task';
-import Hooks from './views/Hooks'
+import Task from './views/Task func';
+// import Hooks from './views/Hooks'
 import '@/index.less';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
