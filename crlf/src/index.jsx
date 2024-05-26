@@ -8,10 +8,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import Task from './views/Task func';
+import Task from './views/TaskRedux';
 // import Hooks from './views/Hooks'
 import '@/index.less';
-import ThemeContext from './ThemeContext';
+// import ThemeContext from './ThemeContext';
+import {Provider} from 'react-redux';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,10 +23,12 @@ root.render(
     <div className='box'><span>{x}</span><span>{y}</span></div>
     {React.createElement('button', null, 'createElementButton')}
     <DemoReact></DemoReact> */}
-    <ThemeContext.Provider value={{store}}>
+    {/* <ThemeContext.Provider value={{store}}> */}
+    <Provider store={store}>
     <Task></Task>
     {/* <Hooks></Hooks> */}
-    </ThemeContext.Provider>
+    </Provider>
+    {/* </ThemeContext.Provider> */}
   </>
   // <React.StrictMode>
     // <App />
