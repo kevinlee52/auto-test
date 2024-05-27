@@ -8,7 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import Task from './views/TaskToolkit';
+import Task from './views/TaskRedux';
 // import Hooks from './views/Hooks'
 import '@/index.less';
 // import ThemeContext from './ThemeContext';
