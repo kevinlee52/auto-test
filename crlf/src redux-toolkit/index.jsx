@@ -8,11 +8,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import Task from './views/TaskMobx';
+import Task from './views/TaskToolkit';
 // import Hooks from './views/Hooks'
 import '@/index.less';
 // import ThemeContext from './ThemeContext';
-import {Provider} from 'mobx-react';
+import {Provider} from 'react-redux';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,7 +24,7 @@ root.render(
     {React.createElement('button', null, 'createElementButton')}
     <DemoReact></DemoReact> */}
     {/* <ThemeContext.Provider value={{store}}> */}
-    <Provider {...store} /*=> task={store.task} personal={store.personal}*/>
+    <Provider store={store}>
     <Task></Task>
     {/* <Hooks></Hooks> */}
     </Provider>
