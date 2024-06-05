@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const readOnly = (target, name, descriptor) => {
+            descriptor.writable = false;
+        }
+
+        const loggerTime = (_, name, descriptor) => {
+            let func = descriptor.value;
+            descriptor.value = function(...params){
+                console.time(name);
+                let res = func.call(this, ...params);
+                console.timeEnd(name);
+                return res;
+            };
+        }
+
+        class Demo {
+            @readOnly x = 100;
+            
+            @loggerTime
+            getX() {
+
+            }
+        }
+
+        let d = new Demo();
+        console.log(d);
+    </script>
+</body>
+</html>
