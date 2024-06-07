@@ -39,22 +39,14 @@
     
     
     <script>
-        let p = new Promise((res, rej)=>{
-            // setTimeout(()=>{
-            //     res('good')
-            //     console.log('pppppp');
-            // },5000)
-            res('good')
-            console.log('pppppp');
-            console.log('AAA');
-        })
-        console.log('BBB');
-        let p_return = p.then(res=>{
-            console.log(p)
-        })
+        let arr = [1,2,[3,4,5,[6,7]],8,9];
+        console.log(arr);
+        arr = [].concat(...arr);
+        console.log(arr);
 
-        console.log(`p_return is: `)
-        console.log(p_return);
+        // let usp = new URLSearchParams(url);
+        // let params = Object.fromEntries(usp.entries());
+
     </script>
 </body>
 </html>
