@@ -8,19 +8,44 @@
 </head>
 <body>
     <script>
-        let p1 = new Promise((resolve,reject)=>{
-            resolve('OK')
-        })
-        let p2 = new Promise((resolve,reject)=>{
-            resolve('AAA')
-        })
-        let p3 = new Promise((resolve,reject)=>{
-            resolve('BBB')
-        })
+        const getData = (url)=>{
+            return new Promise((res, rej) => {
+                setTimeout(()=>{
+                    let ran = Math.random();
+                    let result = ran > 0.5;
+                    if (result) {
+                        res(ran);
+                    }else{
+                        rej(ran);
+                    }
+                }, 1000)
+            })
+        }
+        let p1 = getData('https://api.xxx.com/data1');
+        let p2 = getData('https://api.xxx.com/data2');
+        let p3 = getData('https://api.xxx.com/data3');
 
-        let all = Promise.all([p1,p2,p3])
+        Promise.all([p1,p2])
+            .then(result=>{
+                console.log(result)
+            })
+            .catch(reason=>{
+                console.log(reason);
+            })
 
-        console.log(all);
+        // let p1 = new Promise((resolve,reject)=>{
+        //     resolve('OK')
+        // })
+        // let p2 = new Promise((resolve,reject)=>{
+        //     resolve('AAA')
+        // })
+        // let p3 = new Promise((resolve,reject)=>{
+        //     resolve('BBB')
+        // })
+
+        // let all = Promise.all([p1,p2,p3])
+
+        // console.log(all);
 
 
         // let p = new Promise((resolve, reject)=>{
