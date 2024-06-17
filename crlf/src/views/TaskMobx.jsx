@@ -112,10 +112,10 @@ const Task = function (props) {
     try {
       let { code } = await completeTask(id);
       if (+code !== 0) {
-        message.error("complete error");
+        message.error("complete error!");
       } else {
         task.updateTaskAction(id);
-        message.success("complete success");
+        message.success("complete success!");
       }
     } catch (_) {}
   };
