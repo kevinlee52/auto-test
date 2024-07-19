@@ -10,14 +10,28 @@
     <script>
       strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
       let dict = new Map();
-      strs.forEach((str) => {
-        let sortedStr = str.split("").sort().join("");
-        if (dict.has(sortedStr)) {
-          dict.get(sortedStr).push(str);
+      //   strs.forEach((str) => {
+      //     let sortedStr = str.split("").sort().join("");
+      //     if (dict.has(sortedStr)) {
+      //       dict.get(sortedStr).push(str);
+      //     } else {
+      //       dict.set(sortedStr, [str]);
+      //     }
+      //   });
+      for (let str of strs) {
+        let sorted = str.split("").sort().join("");
+        if (dict.has(sorted)) {
+          dict.get(sorted).push(str);
         } else {
-          dict.set(sortedStr, [str]);
+          dict.set(sorted, [str]);
         }
-      });
+      }
+      const person = { fname: "John", lname: "Doe", age: 25 };
+
+      //   for (let di in person) {
+      //     console.log(di);
+      //     console.log(person[di]);
+      //   }
       console.log(dict);
       console.log(dict.values());
       console.log([...dict.values()]);
