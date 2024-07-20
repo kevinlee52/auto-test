@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        // // ES5
-        // function Store(name, location){
-        //     this.name = name;
-        //     this.location = location;
-        // }
-        // const SingletonStore = (function(){
-        //     let instance = null;
-        //     return function(name, location){
-        //         if(!instance) {
-        //             instance = new Store(name, location)
-        //         }
-        //         return instance
-        //     }
-        // })()
+      // ES5
+      function Store(name, location) {
+        this.name = name;
+        this.location = location;
+      }
+      const SingletonStore = (function () {
+        let instance = null;
+        return function (name, location) {
+          if (!instance) {
+            instance = new Store(name, location);
+          }
+          return instance;
+        };
+      })();
 
-        // ES6
-        class SingletonStore{
-            constructor(name, location){
-                if(!SingletonStore.instance){
-                    this.name = name;
-                    this.location = location;
-                    SingletonStore.instance = this;
-                }
-                return SingletonStore.instance
-            }
-        }
+      //   // ES6
+      //   class SingletonStore {
+      //     constructor(name, location) {
+      //       if (!SingletonStore.instance) {
+      //         this.name = name;
+      //         this.location = location;
+      //         SingletonStore.instance = this;
+      //       }
+      //       return SingletonStore.instance;
+      //     }
+      //   }
 
-        let a = new SingletonStore('Apple', 'NY')
-        let b = new SingletonStore('Orange', 'MA')
+      let a = new SingletonStore("Apple", "NY");
+      let b = new SingletonStore("Orange", "MA");
 
-        console.log(a)
-        console.log(b)
+      console.log(a);
+      console.log(b);
+      console.log(a === b);
     </script>
-</body>
+  </body>
 </html>
