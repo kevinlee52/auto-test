@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        let f = fetch('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
-        f.then(resp => {
-            console.log('3')
-            resp.json().then(data=>{
-                console.log('4')
-                console.log(data)
-            })
-        })
+      let f = fetch(
+        "https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json"
+      );
+      f.then((resp) => {
+        console.log("3");
+        resp.json().then((data) => {
+          console.log("4");
+          console.log(data);
+        });
+      });
 
-        f.catch(err => {
-            console.log('err' + err)
-        })
-        
-        console.log(1)
-        
-        console.log(2)
+      f.catch((err) => {
+        console.log("err" + err);
+      });
 
-        let p = new Promise((resolve, reject) =>{
-            // business logic data
-            resolve(data)
-            reject(error)
-        })
+      console.log(1);
 
+      console.log(2);
+
+      let p = new Promise((resolve, reject) => {
+        // business logic data
+        resolve(data);
+        reject(error);
+      });
     </script>
-</body>
+  </body>
 </html>
